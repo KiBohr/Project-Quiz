@@ -15,7 +15,7 @@ const contentElement = document.querySelector<HTMLDivElement>("#content");
 function createHeadline() {
   const h1 = document.createElement("h1");
   h1.className =
-    "text-6xl uppercase font-semibold animate-bounce transition hover:animate-none cursor-default hover:text-yellow hover:text-5xl";
+    "text-3xl uppercase font-semibold animate-bounce transition hover:animate-none cursor-default hover:text-yellow hover:text-5xl md:text-6xl";
   h1.textContent = "Quiz about stuff";
   contentElement?.appendChild(h1);
 }
@@ -33,27 +33,29 @@ function renderQuestions(questions: QuizItem[]) {
     // ? give the newQuizPictureContainer an img:
     newQuizPictureContainer.innerHTML = `<img class=" object-cover rounded-t-xl shadow-2xs" src="${question.url}" alt="well, we do not have a description. So sorry.">`;
     const newQuizQuestion = document.createElement("p");
-    newQuizQuestion.className = "text-xl font-semibold";
+    newQuizQuestion.className = "text-base px-1 font-semibold md:text-xl ";
     // ? give newQuizQuestion the content:
     newQuizQuestion.textContent = question.question;
     // - give newButtonContainer buttons:
     const newButtonContainer = document.createElement("div");
-    newButtonContainer.className = "flex gap-4 items-center justify-evenly";
+    newButtonContainer.className =
+      "px-4 flex gap-4 items-center justify-evenly";
     question.choices.forEach((choice) => {
       const newButton = document.createElement("button");
       newButton.className =
-        "cursor-pointer border-2 border-green p-2 rounded-xl transition ease-in-out hover:bg-green hover:text-grey";
+        "cursor-pointer border-2 border-green p-1 text-[0.8rem] md:text-base p-2 rounded-xl transition ease-in-out hover:bg-green hover:text-grey";
       newButton.textContent = `${choice}`;
       newButtonContainer.appendChild(newButton);
       //- add EventListener() to the button
       newButton.addEventListener("click", () => {
         if (choice === question.answer) {
           newButton.className = "text-grey bg-green p-2 rounded-xl";
-          newQuizQuestion.className = "text-green text-3xl animate-bounce";
+          newQuizQuestion.className =
+            "text-green text-2xl animate-bounce md:text-3xl";
           newQuizQuestion.textContent = "Correct!";
         } else {
           newButton.className = "text-grey bg-yellow p-2 rounded-xl";
-          newQuizQuestion.className = "text-yellow text-2xl";
+          newQuizQuestion.className = "text-yellow text-xl md:text-2xl";
           newQuizQuestion.textContent = "Incorrect. Try again.";
         }
       });
