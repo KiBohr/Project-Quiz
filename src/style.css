@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme{
+  --color-blue: #120754;
+  --color-green: #058652;
+  --color-grey: #b0c4bc;
+  --color-beige: #dbdad6;
+  --color-yellow: #d2cb2b;
+  --color-pink: #e479aa;
+  --color-blackish: #e479aa;
+}
+
+@font-face {
+  font-family: mont;
+  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf");
+  }
